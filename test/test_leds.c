@@ -15,6 +15,7 @@ Revisar parámetros fuera de los limites.
 //se ejecuya antes de cada prueba
 
 static uint16_t puerto_virtual_leds;
+static uint16_t estado_leds;
 
 void setUp(void){
 
@@ -55,11 +56,30 @@ void test_apagar_y_apagar_un_led_individual(void){
      TEST_ASSERT_EQUAL_HEX16(0, puerto_virtual_leds);
 }
 
-void test_apagar_y_apagar_varios_led_(void){
+void test_prender_y_apagar_varios_led_(void){
 
      LedsSetOn(5);
      LedsSetOff(2);
      LedsSetOn(7);
      LedsSetOff(7);
+     LedsSetOn(5);
      TEST_ASSERT_EQUAL_HEX16(1<<4, puerto_virtual_leds);
+}
+
+void test_estado_led_encendido(void){
+   LedsSetOn(5);
+   LedsSetOff(7);
+   estado_leds=EstadoLed(5);
+
+    TEST_ASSERT_EQUAL_HEX16(1, estado_leds);
+
+}
+
+void test_estado_led_apagado(void){
+   LedsSetOn(5);
+   LedsSetOff(7);
+   estado_leds=EstadoLed(7);
+
+    TEST_ASSERT_EQUAL_HEX16(0, estado_leds);
+
 }

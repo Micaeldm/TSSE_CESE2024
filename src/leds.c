@@ -5,7 +5,7 @@
 #define LED_OFFSET 1
 #define ALL_LEDS_OFF 0X0000
 static uint16_t *puerto;
-
+static uint16_t estado;
 uint16_t LedstoMask(int led){
   return LSB << (led-LED_OFFSET);
 }
@@ -23,3 +23,15 @@ void LedsSetOff( int led){
   //*puerto=0;
   *puerto &=~LedstoMask(led);
 }
+
+int EstadoLed(int led){
+
+estado|= LedstoMask(led);
+
+if(estado==*puerto)
+return 1;
+else
+return 0;
+
+}
+
