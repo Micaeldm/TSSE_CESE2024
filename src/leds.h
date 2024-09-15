@@ -3,38 +3,38 @@
 
 /**
  * @brief Inicializa puerto y apaga todos los LEDs,
- * 
- * @param direccion 
+ *
+ * @param direccion
  */
 void LedsCreate(uint16_t *direccion);
 
 /**
- * @brief Enciende el LED 
- * 
- * @param led 
+ * @brief Enciende el LED
+ *
+ * @param led
  */
-void LedsSetOn( int led);
+void LedsSetOn(int led);
 
 /**
- * @brief Apagael LED 
- * 
- * @param led 
+ * @brief Apagael LED
+ *
+ * @param led
  */
-void LedsSetOff( int led);
+void LedsSetOff(int led);
 
 /**
  * @brief Verifica el estado del led
- * 
- * @param led 
- * @return int 
+ *
+ * @param led
+ * @return int
  */
 int EstadoLed(int led);
 
 /**
  * @brief Verifica los limites de led
- * 
- * @param led 
- * @return true 
- * @return false 
+ *
+ * @param led
+ * @return true
+ * @return false
  */
 bool LedstoLimit(int led);

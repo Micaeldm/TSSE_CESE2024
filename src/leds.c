@@ -10,37 +10,41 @@
 static uint16_t *puerto;
 static uint16_t estado;
 
-uint16_t LedstoMask(int led){
-  return LSB << (led-LED_OFFSET);
+uint16_t LedstoMask(int led)
+{
+  return LSB << (led - LED_OFFSET);
 }
 
-void LedsCreate(uint16_t *direccion){
-  puerto=direccion;
- *puerto = ALL_LEDS_OFF ;
+void LedsCreate(uint16_t *direccion)
+{
+  puerto = direccion;
+  *puerto = ALL_LEDS_OFF;
 }
 
-void LedsSetOn( int led){
- // *puerto=1<<5;
+void LedsSetOn(int led)
+{
+  // *puerto=1<<5;
   *puerto |= LedstoMask(led);
 }
 
-void LedsSetOff( int led){
+void LedsSetOff(int led)
+{
   //*puerto=0;
-  *puerto &=~LedstoMask(led);
+  *puerto &= ~LedstoMask(led);
 }
 
-int EstadoLed(int led){
+int EstadoLed(int led)
+{
 
-estado|= LedstoMask(led);
+  estado |= LedstoMask(led);
 
-if(estado==*puerto)
-return 1;
-else
-return 0;
-
+  if (estado == *puerto)
+    return 1;
+  else
+    return 0;
 }
 
-bool LedstoLimit(int led) {
-
+bool LedstoLimit(int led)
+{
   return ((ULTIMO_LED >= led) && (PRIMER_LED <= led));
 }
