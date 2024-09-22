@@ -6,7 +6,7 @@
  *
  * @param direccion
  */
-void LedsCreate(uint16_t *direccion);
+void LedsCreate(uint16_t * direccion);
 
 /**
  * @brief Enciende el LED
